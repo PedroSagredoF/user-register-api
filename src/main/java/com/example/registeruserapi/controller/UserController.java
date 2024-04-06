@@ -5,6 +5,11 @@ import com.example.registeruserapi.domain.UserRequest;
 import com.example.registeruserapi.entity.User;
 import com.example.registeruserapi.exception.ErrorException;
 import com.example.registeruserapi.repository.UserRepository;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -17,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.regex.Pattern;
 
+
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -27,9 +33,20 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-
-    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Object> registro(@RequestBody UserRequest request) throws ErrorException {
+    @Operation(summary = "Realiza Registro de Nuevos Usuarios" )
+    @ApiResponses(value ={
+            @ApiResponse(responseCode = "200",
+            description = "Nuevo usuario creado con exito",
+            content ={
+                    @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = User.class))
+    }),
+            @ApiResponse(
+                    responseCode = "400", description = "Error en el ingreso del correo o la contraseña", content = @Content
+            )
+    })
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> registerUser(@RequestBody UserRequest request) throws ErrorException {
 
         try {
             emailValidation(request);
