@@ -46,7 +46,7 @@ public class UserController {
             )
     })
     @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> registro(@RequestBody UserRequest request) throws ErrorException {
+    public ResponseEntity<Object> registerUser(@RequestBody UserRequest request) throws ErrorException {
 
         try {
             emailValidation(request);
