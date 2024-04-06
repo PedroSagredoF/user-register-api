@@ -14,7 +14,6 @@ public class Util {
         final long MILLIS = 60000;
 
         long curTimeInMs = beforeTime.getTime();
-        Date afterAddingMins = new Date(curTimeInMs + (minutes * MILLIS));
-        return afterAddingMins;
+        return new Date(curTimeInMs + (minutes * MILLIS));
     }
 }
