@@ -36,18 +36,22 @@ Esta aplicación expone una API RESTful para la creación de usuarios. Utiliza J
 
 1. **Clonar el Repositorio:**
    Clona el repositorio de GitHub en tu máquina local:
-- git clone <url_del_repositorio>
-
+```console
+git clone <url_del_repositorio>
+```
 
 2. **Construir la Aplicación:**
 Desde el directorio raíz del proyecto, utiliza Gradle o Maven para construir la aplicación:
-- mvn clean install
+```console
+mvn clean install
+```
 
 
 3. **Ejecutar la Aplicación:**
 Una vez construida la aplicación, ejecútala:
-- java -jar nombre-del-archivo.jar
-
+```console
+java -jar nombre-del-archivo.jar
+```
 
 4. **Enviar Solicitud HTTP:**
 Utiliza herramientas como Postman o cURL para enviar una solicitud POST a la API:
